@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 4 Month Anniversary</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Georgia&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #ffdce0, #ffc0cb);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .landing {
+      position: fixed;
+      height: 100vh;
+      width: 100%;
+      background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 3;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .landing.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .landing h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .landing button {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      transition: transform 0.2s;
+    }
+
+    .landing button:hover {
+      transform: scale(1.1);
+    }
+
+    .main {
+      padding: 2rem;
+      display: none;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main.visible {
+      display: flex;
+    }
+
+    .typed-text {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      max-width: 800px;
+      margin: 0 auto;
+      z-index: 3;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.2em;
+      background-color: white;
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+      vertical-align: bottom;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .heart {
+      position: fixed;
+      color: pink;
+      font-size: 2rem;
+      opacity: 0;
+      top: 110vh;
+      animation: floatHeart 20s ease-in infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) rotate(-10deg); opacity: 0; }
+      10% { opacity: 0.4; }
+      80% { opacity: 0.4; }
+      100% { transform: translateY(-130vh) rotate(10deg); opacity: 0; }
+    }
+
+    .hearts-container,
+    .stars,
+    #image-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 2s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    .bg-image {
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      width: 200px;
+      height: auto;
+      transition: opacity 1s ease-in;
+      animation: floaty 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .bg-image.active {
+      opacity: 0.3;
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="landing" id="landing">
+    <h1>HAPPY 4 MONTH ANNIVERSARY</h1>
+    <button onclick="startExperience()">PRESS ME PLEASE</button>
+  </div>
+
+  <div class="main" id="main">
+    <div class="stars" id="stars"></div>
+    <div class="hearts-container" id="hearts"></div>
+    <div id="image-container"></div>
+    <div class="typed-text" id="typed-container">
+      <span id="typed"></span><span class="cursor" id="cursor"></span>
+    </div>
+  </div>
+
+  <audio id="bg-music" src="music/every-breath-you-take.mp3" autoplay loop></audio>
+
+  <script>
+    const message = `Happy 4 month anniversary Anne! 
+
+Sorry it's a bit late, but I needed some time to figure this out. I know this isn't the most tangible or complex gift, but just wait 'till you come back to jb, then we'll spend everyday together.
+
+I just wanted to tell you how much I love you, and that you're the thing that pushes me through everyday. You are the only person on the planet that I will never get sick of, and you are the only person on the planet that I'll do anything for. 
+
+I know you don't believe in God, but I genuinely believe that the universe let us meet for a reason, and I'd never forgive myself if I let my own stubborn thoughts get in the way of our love. 
+
+I'm so sorry for making you feel alone, or unimportant, because you are the first and only girl I'll truly love in my entire life. I do make mistakes, but please forgive me, I'm only two years older, and even though my bones creak and ache after I try and tickle you, I'm still happily learning how to love and live everyday that we're together. 
+
+I'm so grateful for even the parts of you, that you think are the worst of you, which aren't even that bad. I'd much rather argue with you everyday over where we should eat or when we should go home, rather than sit by myself and only remember you by the way you made me feel. I want to spend the rest of my life with you. 
+
+I never knew what I wanted or what love truly was until I met you. I always thought that when I met the one, I would want to die for them. It's only know that I realised I don't want to die for you. I want to live for you. It's thought it'd be easy to die for you, but now I see that I can't bear leaving you alone, I can't bear letting myself give up so easily when you're the only reason for me to be here in the first place. 
+
+Instead, I'm going to live for you, to be committed to change and grow with you, to be a better man than I ever was, my father ever was, for no one else but you. Not for you parents. Not for your siblings. Not for my parents. Not for my brother. Not for our children. For you. I am on your side, we are a team, and I'll never let you fall, we may stumble, we may trip, but I will always pull you back up. And I'm hoping you'll do the same for me. I know that you hate when I don't fulfill my promises, but I promise, to be the best husband for you to the best of my ability, and I hope that you'll give me the chance I need to prove it. 
+
+I love you Anne, and please don't ever think otherwise. 
+
+P.S. Please don't think I don't love your family too, I'm so excited to meet and love them one day, and I'm so excited for you to meet family too hehe. 
+
+P.P.S. Please don't thank me or apologise or try to make me feel better or anything, this is for you, I'm happy to just be here, and I can't wait to see you next week, and then in September. I love you Annie Bananie (~￣³￣)~`;
+
+    let index = 0;
+    const typed = document.getElementById('typed');
+    const cursor = document.getElementById('cursor');
+    let audioCtx;
+
+    function playKeySound() {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'square';
+      osc.frequency.value = 900;
+      gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.05);
+    }
+
+    function typeWriter() {
+      if (index < message.length) {
+        const char = message[index];
+        typed.textContent += char;
+        playKeySound();
+        index++;
+        let delay = 50;
+        if (char === '.') delay = 2000;
+        if (char === '\n') delay = 3000;
+        setTimeout(typeWriter, delay);
+      }
+    }
+
+    function startExperience() {
+      const landing = document.getElementById('landing');
+      const main = document.getElementById('main');
+      const music = document.getElementById('bg-music');
+
+      landing.classList.add('hidden');
+      setTimeout(() => {
+        landing.style.display = 'none';
+        main.classList.add('visible');
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        initHearts();
+        initStars();
+        spawnImages();
+        typeWriter();
+
+        music.volume = 0;
+        music.play();
+        const fadeIn = setInterval(() => {
+          if (music.volume < 0.95) {
+            music.volume = Math.min(music.volume + 0.01, 1);
+          } else {
+            clearInterval(fadeIn);
+          }
+        }, 200);
+      }, 1500);
+    }
+
+    function initHearts() {
+      const heartsContainer = document.getElementById('hearts');
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDelay = (Math.random() * 10) + 's';
+        heart.innerHTML = Math.random() > 0.5 ? '❤' : '💕';
+        heartsContainer.appendChild(heart);
+      }
+    }
+
+    function initStars() {
+      const starsContainer = document.getElementById('stars');
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.animationDelay = Math.random() * 2 + 's';
+        starsContainer.appendChild(star);
+      }
+    }
+
+    function spawnImages() {
+      const imgContainer = document.getElementById('image-container');
+      const placeholders = [
+        'images/Anneimg1.jpeg', 'images/Anneimg2.jpeg', 'images/Anneimg3.jpeg',
+        'images/Anneimg4.jpeg', 'images/Anneimg5.jpeg', 'images/Anneimg6.jpeg',
+        'images/Anneimg7.jpeg', 'images/Anneimg8.jpeg', 'images/Anneimg9.jpeg',
+        'images/Anneimg10.jpeg', 'images/Anneimg11.jpeg', 'images/Anneimg12.jpeg',
+        'images/Anneimg13.jpeg', 'images/Anneimg14.jpeg', 'images/Anneimg15.jpeg',
+        'images/Anneimg16.jpeg', 'images/Anneimg17.jpeg', 'images/Anneimg18.jpeg',
+        'images/Anneimg19.jpeg', 'images/Anneimg20.jpeg', 'images/Anneimg21.jpeg',
+      ];
+
+      let currentIndex = 0;
+      const activePhotos = [];
+      const maxPhotos = 10;
+
+      function trySpawnImage() {
+        const src = placeholders[currentIndex];
+        currentIndex = (currentIndex + 1) % placeholders.length;
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.classList.add('bg-image');
+
+        const padding = 220;
+        let newX, newY, tries = 0;
+        let overlapping = false;
+
+        do {
+          newX = Math.random() * (window.innerWidth - padding);
+          newY = Math.random() * (window.innerHeight - padding);
+          overlapping = activePhotos.some(p => {
+            const dx = parseFloat(p.style.left) - newX;
+            const dy = parseFloat(p.style.top) - newY;
+            return Math.abs(dx) < 150 && Math.abs(dy) < 150;
+          });
+          tries++;
+        } while (overlapping && tries < 20);
+
+        img.style.left = newX + 'px';
+        img.style.top = newY + 'px';
+
+        imgContainer.appendChild(img);
+        requestAnimationFrame(() => img.classList.add('active'));
+
+        activePhotos.push(img);
+
+        if (activePhotos.length > maxPhotos) {
+          const old = activePhotos.shift();
+          old.classList.remove('active');
+          setTimeout(() => old.remove(), 1000);
+        }
+      }
+
+      for (let i = 0; i < 100; i++) {
+        setTimeout(trySpawnImage, 5000 * (i + 1));
+      }
+    }
+  </script>
+</body>
+</html>
